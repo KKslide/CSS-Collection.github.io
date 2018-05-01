@@ -1,0 +1,77 @@
+@import './base.css';
+.set_BG(@x, @y) {
+    background-image: url('./share-icons.png');
+    background-repeat: no-repeat;
+    background-position: @x @y;
+}
+
+.main {
+    .nav {
+        margin: 60px 0 0 50px;
+        ul {
+            li {
+                a {
+                    display: inline-block;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    margin-bottom: 5px; // border:1px solid #000;
+                    transition: all .4s;
+                }
+                a.weixin {
+                    .set_BG(4px,
+                    4px);
+                    background-color: rgba(113, 199, 12, 0);
+                    position: relative;
+
+                }
+                a.msg {
+                    .set_BG(3px,
+                    -42px);
+                    background-color: rgba(255, 167, 9, 0);
+                }
+                a.share {
+                    .set_BG(4px,
+                    -83px);
+                    background-color: rgba(10, 164, 231, 0);
+                }
+                a.setting {
+                    .set_BG(4px,
+                    -128px);
+                    background-color: rgba(213, 43, 42, 0);
+                }
+                .weixin:hover {
+                    background-color: rgba(113, 199, 12, 1);
+                    background-position: -41px 4px;
+                    #wechat{
+                        display: block;
+                    }
+                }
+                .msg:hover {
+                    background-color: rgba(255, 167, 9, 1);
+                    background-position: -43px -42px;
+                }
+                .share:hover {
+                    background-color: rgba(10, 164, 231, 1);
+                    background-position: -41px -83px;
+                }
+                .setting:hover {
+                    background-color: rgba(213, 43, 42, 1);
+                    background-position: -41px -128px;
+                }
+            }
+            li:first-child {
+                position: relative;
+                img {
+                    position: absolute;
+                    top: -5px;
+                    left: 55px;
+                    padding: 2px;
+                    background-color: #fff;
+                    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+                    display: none;
+                }
+            }
+        }
+    }
+}
