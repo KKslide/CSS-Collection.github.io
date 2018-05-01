@@ -10,6 +10,13 @@
   margin-bottom: 5px;
   transition: all .4s;
 }
+.main .nav ul li a .desc {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000;
+  opacity: 0;
+}
 .main .nav ul li a.weixin {
   background-image: url('share-icons.png');
   background-repeat: no-repeat;
@@ -57,7 +64,7 @@
 .main .nav ul li:first-child {
   position: relative;
 }
-.main .nav ul li:first-child img {
+.main .nav ul li:first-child #wechat {
   position: absolute;
   top: -5px;
   left: 55px;
