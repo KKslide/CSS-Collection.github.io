@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>scroll-demo</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#one" index="one" class="btn">HTML</a>
+            </li>
+            <li>
+                <a href="#two" index="two" class="btn">CSS</a>
+            </li>
+            <li>
+                <a href="#three" index="three" class="btn">JavaScript</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main">
+        <section id="one">
+            <h1>HTML</h1>
+        </section>
+        <section id="two">
+            <h1>CSS</h1>
+        </section>
+        <section id="three">
+            <h1>JavaScript</h1>
+        </section>
+    </div>
+</body>
+
+</html>
+<script>
+    /**
+        方式一：
+        这是js方式来实现平滑的滚动效果,
+        这种方式有兼容问题,
+        如果不想使用js来实现，可以给html标签添加scroll-behavior:smooth
+    */
+    var box = document.getElementsByClassName('main')[0]
+    var btns = document.getElementsByClassName('btn');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function (e) {
+            if (e.preventDefault()) { // chrom
+                e.preventDefault();
+            } else {
+                window.event.returnValue = false;// ie
+            }
+            document.getElementById(this.getAttribute('index')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    }
+    /**
+        方式二：
+        css
+    */
+    // var html = document.querySelector('html')
+    // html.style.scrollBehavior = 'smooth';
+</script>
