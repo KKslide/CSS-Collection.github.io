@@ -9,7 +9,7 @@ body {
 
 label.btn {
     position: absolute;
-    top: 400px;
+    top: 500px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
@@ -27,6 +27,7 @@ img {
 div#img {
     margin: 0 auto;
     position: relative;
+    top: 100px;
     width: 300px;
     height: 360px;
     box-shadow: 3px 1px 4px 0 rgba(0, 0, 0, 0.2);

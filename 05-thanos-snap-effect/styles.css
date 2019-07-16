@@ -30,7 +30,8 @@ body {
     outline: none;
     /* background:url("thanos-logo.png") white 15px no-repeat; */
 	/* background-size: 50px; */
-	/* transition: .3s; */
+    /* transition: .3s; */
+    font-family: sans-serif;
 }
 
 #start-btn.clicked {
