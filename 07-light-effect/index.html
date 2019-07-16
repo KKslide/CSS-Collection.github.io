@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="btnBox">
+        <label class="button" for="btn">
+            <input id="btn" type="checkbox" value="0" style="opacity: 0;">
+            <span class="switcher"></span>
+        </label>
+    </div>
+    <h1>The Light</h1>
+</body>
+
+</html>
+<script>
+    var _flag = true;
+    var btn = document.querySelector("#btn");
+    var letter = document.querySelector("h1");
+    btn.onclick = function () {
+        if (_flag) {
+            letter.classList.add("lighted");
+        } else {
+            letter.classList.remove("lighted");
+        }
+        _flag = !_flag;
+    }
+</script>
