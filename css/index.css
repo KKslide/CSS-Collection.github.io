@@ -19,7 +19,7 @@ body #content {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 70px;
+  padding: 25px 70px;
 }
 body #content .title {
   text-align: center;
@@ -65,7 +65,7 @@ body #content .list ul li:hover {
 body #content .list ul li:hover a {
   font-size: 18px;
 }
-/*webkit内核*/
+/*webkitå†…æ ¸*/
 .scroll_content::-webkit-scrollbar {
   width: 0px;
   height: 0px;
@@ -92,7 +92,7 @@ body #content .list ul li:hover a {
   width: 10px;
   height: 10px;
 }
-/*o内核*/
+/*oå†…æ ¸*/
 .scroll_content .-o-scrollbar {
   -moz-appearance: none !important;
   background: rgba(0, 255, 0, 0) !important;

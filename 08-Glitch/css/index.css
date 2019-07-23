@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: #1f1f1f;
+  font-family: 'Ubuntu Mono', 'Arial', sans-serif;
+  color: #CFCFCF;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+#text {
+  z-index: 1;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  left: 50%;
+  top: 50%;
+}
+div {
+  z-index: 100;
+  position: fixed;
+  background-color: #FFFFFF;
+  width: 600px;
+  height: 2px;
+}

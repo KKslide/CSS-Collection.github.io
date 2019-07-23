@@ -20,6 +20,7 @@
                 <li><a href="./05-thanos-snap-effect/index.html">thanos-snap-effect</a></li>
                 <li><a href="./06-hover-effects/index.html">hover-effects</a></li>
                 <li><a href="./07-light-effect/index.html">light-effects</a></li>
+                <li><a href="./08-Glitch/index.html">Glitch-effects</a></li>
             </ul>
         </div>
     </div>
@@ -45,11 +46,12 @@
     //             scrollDir = "up";
     //         }
     //     }
-    // }
+    // } http://www.jq22.com/demo/css3input20160412/
+    // https://www.zcool.com.cn/article/ZNDk1NzU2.html
     var ul = document.querySelector(".scroll_content");
     var listDom = document.querySelector(".list");
     ul.onmousewheel = function (e) {
-        if(ul.offsetHeight<=listDom.offsetHeight) return;
+        if (ul.offsetHeight <= listDom.offsetHeight) return;
         if (e.wheelDelta < 0) { // 向下滚动
             setTimeout(function () {
                 ul.style.overflowY = "scroll";
