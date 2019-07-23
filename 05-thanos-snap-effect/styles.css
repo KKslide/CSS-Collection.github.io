@@ -34,22 +34,10 @@ body {
     font-family: sans-serif;
 }
 
-#start-btn.clicked {
-	animation: click linear .2s;
+#target{
+    cursor: pointer;
 }
 
 .dust {
     position: absolute;
-}
-
-@keyframes click{
-	0%{
-		transform: scale(1)
-	}
-	50%{
-		transform: scale(1.1)
-	}
-	100%{
-		transform: scale(1)
-	}
 }
