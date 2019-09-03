@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .content {
+            height: inherit;
+            position: relative;
+        }
+
+        .item {
+            z-index: 10;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            transition: .3s;
+        }
+
+        .item:hover img {
+            overflow: hidden;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="item"><img src="images/1.jpg"></div>
+        <div class="item"><img src="images/2.jpg"></div>
+        <div class="item"><img src="images/3.jpg"></div>
+        <div class="item"><img src="images/4.jpg"></div>
+        <div class="item"><img src="images/5.jpg"></div>
+        <div class="item"><img src="images/6.jpg"></div>
+        <div class="item"><img src="images/7.jpg"></div>
+        <div class="item"><img src="images/8.jpg"></div>
+        <div class="item"><img src="images/9.jpg"></div>
+        <div class="item"><img src="images/10.jpg"></div>
+        <div class="item"><img src="images/11.jpg"></div>
+        <div class="item"><img src="images/12.jpg"></div>
+        <div class="item"><img src="images/13.jpg"></div>
+        <div class="item"><img src="images/14.jpg"></div>
+        <div class="item"><img src="images/15.jpg"></div>
+        <div class="item"><img src="images/16.jpg"></div>
+        <div class="item"><img src="images/17.jpg"></div>
+        <div class="item"><img src="images/18.jpg"></div>
+        <div class="item"><img src="images/19.jpg"></div>
+        <div class="item"><img src="images/20.jpg"></div>
+        <div class="item"><img src="images/21.jpg"></div>
+        <div class="item"><img src="images/22.jpg"></div>
+        <div class="item"><img src="images/23.jpg"></div>
+        <div class="item"><img src="images/24.jpg"></div>
+    </div>
+</body>
+
+</html>
+<script src="../js/jquery.min.js"></script>
+<script>
+    /* 
+        item：
+            · 第一行：top值 为0
+                           left值 为 自身宽度*块数
+            
+            · 其他行：top值 为 排序后必须算出图片的缩小比例，再计算出缩小后的图片高度，第一行之外的元素高度进行排序，每次循环到下一个元素，就替换掉 前三个元素中的高度最小值
+     */
+
+
+    function waterFall() {
+        // 1- 确定，图片宽度 = 浏览器宽度 - 滚动条宽度
+        let pageWidth = getClient().width - getBarWidth()
+        let columns = 3 // 总共3列
+        let itemWidth = parseInt(pageWidth / columns) // 1-1 得到item的宽度
+        $(".item").width(itemWidth) // 1-2 设置item的宽度
+
+        let arr = [] // 空数组用于存放每一行的高度
+        $(".content .item").each(function (i) {
+            let height = $(this).find("img").height() // 获取图片高度
+            let width = $(this).find("img").width() // 获取图片宽度
+            let ratio = itemWidth / width // 获取图片的缩放比
+            let boxHeight = parseInt(height * ratio) // 用缩放比计算缩放后图片的高度, 注意是 高度
+
+            // 2- 第一行
+            if (i < columns) {
+                $(this).css({
+                    top: 0, // 高度为0
+                    left: itemWidth * i // 宽度为每个item的宽度相加
+                })
+                arr.push(boxHeight) // 把第一行的高度数值，依次添加到数组
+            }
+            // 3- 其他行
+            else {
+                let minHeight = arr[0], index = 0
+                // 3-1 每一次循环到新的item，取出前三个item元素中的最小高度 和它的索引值
+                for (let j = 0; j < arr.length; j++) {
+                    if (minHeight > arr[j]) {
+                        minHeight = arr[j]
+                        index = j
+                    }
+                }
+
+                $(this).css({
+                    top: arr[index], // 当前item的top值 就是arr数组中最小高度的top值
+                    left: $(".item").eq(index).css("left") // 当前item的left值 就是arr数组中 最小高度的 left值
+                })
+
+                // 赋值完之后 arr数组中的高度最小值 要加上当前item的高度值，这样下一次循环才能再继续比较
+                arr[index] = arr[index] + boxHeight 
+            }
+
+        })
+    }
+
+    // clientWidth 处理兼容性
+    function getClient() {
+        return {
+            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        }
+    }
+
+    // 获取滚动条宽度
+    function getBarWidth() {
+        let outDiv = document.createElement("div");
+        outDiv.style.width = "100px";
+        outDiv.style.position = "absolute";
+        outDiv.style.top = "-9999px";
+        document.body.appendChild(outDiv);
+        let widthnobar = outDiv.offsetWidth;
+
+        outDiv.style.overflow = "scroll";
+
+        let innerDiv = document.createElement("div");
+        innerDiv.style.width = "100%";
+        outDiv.appendChild(innerDiv);
+        let widthbar = innerDiv.offsetWidth;
+
+        document.body.removeChild(outDiv);
+
+        return widthnobar - widthbar;
+    }
+
+    window.onload = function () {
+        waterFall()
+    }
+
+    window.onresize = function () {
+        waterFall()
+    }
+
+    /**
+     * 问题：
+     * 1.如果是动态加载元素 在未完全加载完毕的时候 没办法获取到图片高度怎么办？
+     * 2.如果文字而不是图片的话，怎么去依次设置高度和位置？
+     */
+    
+</script>
