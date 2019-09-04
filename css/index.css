@@ -65,7 +65,7 @@ body #content .list ul li:hover {
 body #content .list ul li:hover a {
   font-size: 18px;
 }
-/*webkitå†…æ ¸*/
+/*webkit内核*/
 .scroll_content::-webkit-scrollbar {
   width: 0px;
   height: 0px;
@@ -92,7 +92,7 @@ body #content .list ul li:hover a {
   width: 10px;
   height: 10px;
 }
-/*oå†…æ ¸*/
+/*o内核*/
 .scroll_content .-o-scrollbar {
   -moz-appearance: none !important;
   background: rgba(0, 255, 0, 0) !important;
