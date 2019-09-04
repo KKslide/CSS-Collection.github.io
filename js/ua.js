@@ -1,3 +1,4 @@
+// 浏览器UA判断
 var browser = {
     versions: function () {
         var u = navigator.userAgent, app = navigator.appVersion;
