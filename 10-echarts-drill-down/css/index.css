@@ -1,0 +1,42 @@
+@import 'pre.css';
+body #main {
+  height: 650px;
+  width: 1300px;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  position: relative;
+}
+body #main #china_map,
+body #main #proe_map,
+body #main #city_map {
+  width: 960px;
+  height: 650px;
+  margin: 0 auto;
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  display: none;
+}
+body #main .retPro {
+  z-index: 999;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  display: block;
+}
+body #main .retPro a {
+  height: 30px;
+  background: #fff;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-left: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #393939;
+  text-decoration: none;
+}
+body #main .retPro:last-child {
+  left: 110px;
+}
